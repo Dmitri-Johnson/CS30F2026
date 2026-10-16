@@ -50,12 +50,18 @@ public class Roster {
 				
 				System.out.println("Enter student last name: ");
 				lastName = input.next();
+				writeStu.writeObject(new StuName(firstName, lastName));
 				
 				writeFile.write(firstName + " " + lastName);
 				writeFile.newLine();
 				
 			}//ends for loop
 			
+			for(int i=0; i < numStu; i++) 
+			{
+				
+			}
+			writeStu.close();
 			writeFile.close();
 			out.close();
 			System.out.println("Data written to file.");
