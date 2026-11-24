@@ -1,50 +1,72 @@
 package Mastery;
 
 
+import java.io.*;
+import java.util.Scanner;
+
 public class CountVowels 
 {
 
-   public static void main(String[] args) 
-   {
-       File textFile;
-       FileReader in;
-       BufferedReader readFile;
-       String fileName;
-       String lineInFile, lowercaseText, letter;
-       int vowelSum = 0;
-       
-       
+	public static void main(String[] args) 
+	{
+		File textFile;
+		FileReader in;
+		BufferedReader readFile;
+		
+		Scanner input = new Scanner(System.in);
+		
+		String fileName;
+		String lineInFile, lowercaseText, letter;
+		
+		int vowelSum = 0;
+		
+		
+		System.out.println("Enter the name of the file: ");
+		fileName = input.next();
+		
+		
+		try
+		{
+			textFile = new File(fileName);
+			in = new FileReader(textFile);
+			readFile = new BufferedReader(in);
+			
+			while((lineInFile = readFile.readLine()) != null)
+			{
+				lowercaseText = lineInFile.toLowerCase();
+				
+				for(int i=0; i < lowercaseText.length(); i++)
+				{
+					letter = lowercaseText.substring(i, i + 1);
+					
+					if(letter.equals("a") || letter.equals("e") || letter.equals("i")
+							|| letter.equals("o") || letter.equals("u"))
+					{
+						vowelSum += 1;
+					}
+					
+				}//ends for loop
+				
+			}
+			
+			System.out.println("Number of vowels = " + vowelSum);
+			
+			readFile.close();
+			in.close();
+			
+		}
+		catch (FileNotFoundException e) 
+		{
+			System.out.println("File does not exist or could not be found.");
+			System.err.println("FileNotFoundException: " + e.getMessage());
+		}
+		catch (IOException e) 
+		{
+			System.out.println("Problem reading file.");
+			System.err.println("IOException: " + e.getMessage());
+		}
+		
+	}
 
-       /* prompt the user for the name of the file */
-        //????
-
-       /* count the vowels in the file */
-       try {
-                //new File object required
-                //new File reader object required
-                //new BufferedReader object required
-
-                //read the lines from the file
-                    //as lines are read convert them to lower case
-                    //iterate through the lower case text
-                            //using the String class 
-                            //check if each character traverse throug is a vowel
-                            //update total vowels
-                
-            }
-            //user wants to know the number of vowels inside a file name
-
-            //close BufferedReader object
-            //close FileReader object
-           
-       } 
-       catch (/* ??? */) 
-       {
-           /* ??? */
-       } 
-       catch (/* ??? */) 
-       {
-           /* ??? */
-       }
-   }
 }
+

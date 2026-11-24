@@ -13,7 +13,7 @@ public class WordGuess {
         final String FLAG = "!";
 
         // Create a File object with the name of your file as the parameter
-        File wordFile = new File("words.txt");
+        File wordFile = new File("../Chapter11/src/Mastery/words.txt");
 
         // Declare a File reader object
         FileReader fileReader = null;
